@@ -10,8 +10,6 @@ public class My_thread2{
 		
 		t1.start();
 		t2.start();
-		
-		System.out.println(my_count.get_coin());
 	}
 }
 class ATM{
@@ -35,8 +33,14 @@ class Thread3 extends Thread{
 	@Override
 	public void run() {
 		for(int i=0;i<10;i++) {
-			System.out.println("1번째: 10원넣기:"+A.get_coin());
+			try {
+				Thread.sleep(1000);
+			}
+			catch(Exception e) {
+				System.out.println("오류발생");
+			}
 			this.A.input_coin(10);
+			System.out.println(i+" 1번째: 10원넣기:"+A.get_coin());
 		}
 	}
 }
@@ -49,9 +53,15 @@ class Thread4 extends Thread{
 	@Override
 	public void run() {
 		for(int i=0;i<10;i++) {
-			System.out.println("2번째: 10원넣기:"+A.get_coin());
+			try {
+				Thread.sleep(1000);
+			}
+			catch(Exception e) {
+				System.out.println("오류발생");
+			}
 			this.A.input_coin(10);
+			System.out.println(i+" 2번째: 10원넣기:"+A.get_coin());
 		}
 	}
 }
-//Race condition 발생
+//Race condition 문제
